@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://50qqu0ux7icp"]
+
+[ext_resource type="Texture2D" uid="uid://co02eyhqjfqgg" path="res://PONG/assets/pelota.webp" id="1_6t0yc"]
+[ext_resource type="Script" uid="uid://pwumxam38vm5" path="res://PONG/Pelota/pelota.gd" id="1_tsgef"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tsgef"]
+radius = 15.0
+
+[node name="Pelota" type="CharacterBody2D" unique_id=1529541733]
+script = ExtResource("1_tsgef")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1482174850]
+position = Vector2(0.50000095, -8.940697e-07)
+scale = Vector2(0.040488925, 0.040816322)
+texture = ExtResource("1_6t0yc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1416432419]
+shape = SubResource("CircleShape2D_tsgef")

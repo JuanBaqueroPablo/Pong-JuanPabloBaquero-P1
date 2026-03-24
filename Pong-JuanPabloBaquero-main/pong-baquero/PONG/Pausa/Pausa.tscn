@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://i6qf8qkvfb8r"]
+
+[ext_resource type="Script" uid="uid://408b66t0gm32" path="res://PONG/Pausa/pausa.gd" id="1_2uefl"]
+
+[node name="Pausa" type="CanvasLayer" unique_id=1997584499]
+script = ExtResource("1_2uefl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1326451786]
+offset_left = 412.0
+offset_top = 145.0
+offset_right = 755.0
+offset_bottom = 465.0
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="Juego Pausado" type="Label" parent="ColorRect" unique_id=326006886]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 11.0
+offset_right = 354.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 45
+text = "Juego Pausado"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NivelFacil" type="Button" parent="ColorRect" unique_id=1909649968]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23300001
+anchor_top = 0.35000002
+anchor_right = 0.23300001
+anchor_bottom = 0.35000002
+offset_left = 0.08099365
+offset_top = -25.000008
+offset_right = 155.081
+offset_bottom = 24.999992
+theme_override_font_sizes/font_size = 30
+text = "Nivel Facil"
+
+[node name="NivelDificl" type="Button" parent="ColorRect" unique_id=399340412]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 141.0
+offset_right = 249.0
+offset_bottom = 191.0
+theme_override_font_sizes/font_size = 30
+text = "Nivel Dificil"
+
+[node name="1v1" type="Button" parent="ColorRect" unique_id=916615708]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 199.0
+offset_right = 199.0
+offset_bottom = 249.0
+theme_override_font_sizes/font_size = 30
+text = "1vs1"
+
+[node name="Reinicar" type="Button" parent="ColorRect" unique_id=177061713]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 253.0
+offset_right = 233.0
+offset_bottom = 303.0
+theme_override_font_sizes/font_size = 30
+text = "Reiniciar"
+
+[connection signal="pressed" from="ColorRect/NivelFacil" to="." method="_on_nivel_facil_pressed"]
+[connection signal="pressed" from="ColorRect/NivelDificl" to="." method="_on_nivel_dificl_pressed"]
+[connection signal="pressed" from="ColorRect/1v1" to="." method="_on_v_1_pressed"]
+[connection signal="pressed" from="ColorRect/Reinicar" to="." method="_on_reinicar_pressed"]

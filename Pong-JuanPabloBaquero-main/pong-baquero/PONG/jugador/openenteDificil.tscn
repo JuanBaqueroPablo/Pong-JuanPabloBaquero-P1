@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://xpk15rkc8kro"]
+
+[ext_resource type="Script" uid="uid://cmike773voa8x" path="res://PONG/jugador/oponentedificil.gd" id="1_md4wd"]
+[ext_resource type="Texture2D" uid="uid://c0vgciutsaasa" path="res://PONG/assets/barra-pongazu.png" id="2_xi1l6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omvyu"]
+radius = 5.0
+height = 118.0
+
+[node name="Oponentedificil" type="CharacterBody2D" unique_id=1536768540]
+position = Vector2(100, 300)
+motion_mode = 1
+up_direction = Vector2(0.99995005, -0.009999501)
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0
+script = ExtResource("1_md4wd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1489861756]
+position = Vector2(0.07812541, -1.2187598)
+scale = Vector2(0.1051636, 0.2313232)
+texture = ExtResource("2_xi1l6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1947258543]
+position = Vector2(0, -1)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_omvyu")

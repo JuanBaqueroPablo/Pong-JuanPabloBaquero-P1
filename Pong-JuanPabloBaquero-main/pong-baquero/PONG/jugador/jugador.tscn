@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bkqkfhw6e0i2v"]
+
+[ext_resource type="Script" uid="uid://df7m3s6g065jk" path="res://PONG/jugador/jugador.gd" id="1_5vouv"]
+[ext_resource type="Texture2D" uid="uid://c0vgciutsaasa" path="res://PONG/assets/barra-pongazu.png" id="1_y3xgi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omvyu"]
+radius = 5.0
+height = 118.0
+
+[node name="Jugador" type="CharacterBody2D" unique_id=1536768540]
+position = Vector2(100, 300)
+up_direction = Vector2(0.99995005, -0.009999501)
+slide_on_ceiling = false
+script = ExtResource("1_5vouv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1489861756]
+position = Vector2(0.07812541, -1.2187598)
+scale = Vector2(0.1051636, 0.2313232)
+texture = ExtResource("1_y3xgi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1947258543]
+position = Vector2(0, -1)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_omvyu")

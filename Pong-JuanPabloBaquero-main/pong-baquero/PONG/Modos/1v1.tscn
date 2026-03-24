@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://bpjsxopqr2hyl"]
+
+[ext_resource type="Script" uid="uid://c4uchhif4xu8v" path="res://PONG/Modos/cancha.gd" id="1_djgbr"]
+[ext_resource type="Texture2D" uid="uid://cmro7sv24ov6p" path="res://PONG/assets/cancha.jpg" id="2_rqy01"]
+[ext_resource type="PackedScene" uid="uid://bkqkfhw6e0i2v" path="res://PONG/jugador/jugador.tscn" id="3_72r7m"]
+[ext_resource type="PackedScene" uid="uid://dij5t2c2p01ph" path="res://PONG/jugador/oponente.tscn" id="4_ujd0j"]
+[ext_resource type="PackedScene" uid="uid://50qqu0ux7icp" path="res://PONG/Pelota/pelota.tscn" id="5_pmi0r"]
+[ext_resource type="PackedScene" uid="uid://i6qf8qkvfb8r" path="res://PONG/Pausa/Pausa.tscn" id="6_fuisc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51x0o"]
+size = Vector2(1152, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrwlj"]
+size = Vector2(1152, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjswo"]
+size = Vector2(162, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eb7o5"]
+size = Vector2(130, 648)
+
+[node name="Cancha" type="Node2D" unique_id=21041043]
+script = ExtResource("1_djgbr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1336160347]
+position = Vector2(579, 324)
+scale = Vector2(0.80872923, 0.7367347)
+texture = ExtResource("2_rqy01")
+
+[node name="ParedSuperior" type="StaticBody2D" parent="." unique_id=320507992]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedSuperior" unique_id=297144447]
+position = Vector2(576, 3)
+shape = SubResource("RectangleShape2D_51x0o")
+debug_color = Color(0.94913, 0.072691835, 0.54058343, 0.41960785)
+
+[node name="ParedInferior" type="StaticBody2D" parent="." unique_id=1361310662]
+position = Vector2(1151, 646)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedInferior" unique_id=2090517111]
+position = Vector2(-575, -1)
+shape = SubResource("RectangleShape2D_hrwlj")
+debug_color = Color(0.00026664435, 0.52736753, 0.99999994, 0.41960785)
+
+[node name="Jugador" parent="." unique_id=1536768540 instance=ExtResource("3_72r7m")]
+position = Vector2(80, 332)
+motion_mode = 1
+wall_min_slide_angle = 0.0
+platform_on_leave = 2
+
+[node name="Oponente" parent="." unique_id=1591681509 instance=ExtResource("4_ujd0j")]
+position = Vector2(1073, 335)
+platform_on_leave = 2
+platform_wall_layers = 1
+
+[node name="ArcoIzq" type="Area2D" parent="." unique_id=966168010]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArcoIzq" unique_id=1955329694]
+position = Vector2(-56, 323)
+shape = SubResource("RectangleShape2D_hjswo")
+
+[node name="ArcoDer" type="Area2D" parent="." unique_id=1399170370]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArcoDer" unique_id=2043292815]
+position = Vector2(1192, 326)
+shape = SubResource("RectangleShape2D_eb7o5")
+
+[node name="Pelota" parent="." unique_id=1529541733 instance=ExtResource("5_pmi0r")]
+position = Vector2(577, 324)
+
+[node name="LabelIzq" type="Label" parent="." unique_id=27248386]
+offset_left = 467.0
+offset_top = 31.0
+offset_right = 501.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelDer" type="Label" parent="." unique_id=961655217]
+offset_left = 658.0
+offset_top = 35.0
+offset_right = 692.0
+offset_bottom = 118.0
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelMensaje" type="Label" parent="." unique_id=1692609131]
+offset_left = 182.0
+offset_top = 187.0
+offset_right = 976.0
+offset_bottom = 286.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 58
+text = "Tocar ENTER para empezar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pausa" parent="." unique_id=1997584499 instance=ExtResource("6_fuisc")]
+
+[node name="Label" type="Label" parent="." unique_id=361898652]
+offset_left = 440.0
+offset_top = 9.0
+offset_right = 738.0
+offset_bottom = 32.0
+text = "mantener presionado ESC para pausar"
+
+[connection signal="body_entered" from="ArcoIzq" to="." method="_on_arco_izq_body_entered"]
+[connection signal="body_entered" from="ArcoDer" to="." method="_on_arco_der_body_entered"]
